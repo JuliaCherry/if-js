@@ -1,0 +1,26 @@
+{
+  "name": "if-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "devDependencies": {
+    "eslint": "^8.29.0",
+    "husky": "^8.0.2",
+    "prettier": "2.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint": "prettier --write . && eslint main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuliaCherry/if-js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuliaCherry/if-js/issues"
+  },
+  "homepage": "https://github.com/JuliaCherry/if-js#readme"
+}
