@@ -28,20 +28,19 @@ for (let i = 0; i < arr.length; i++) {
   result *= arr[i];
 }
 console.log(result);
-console.log(/-----------/);
 
-const arrow = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < arrow.length; i++) {
-  if (arrow[i] > 5 && arrow[i] < 10) {
-    console.log(arrow[i]);
+const array = [2, 5, 8, 15, 0, 6, 20, 3];
+for (let i = 0; i < array.length; i++) {
+  if (array[i] > 5 && array[i] < 10) {
+    console.log(array[i]);
   }
 }
-console.log(/-----------/);
 
-const arrow2 = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < arrow2.length; i++) {
-  if (arrow2[i] % 2 === 0) {
-    console.log(arrow2[i]);
+const array2 = [2, 5, 8, 15, 0, 6, 20, 3];
+
+for (let i = 0; i < array2.length; i++) {
+  if (array2[i] % 2 === 0) {
+    console.log(array2[i]);
   }
 }
 
@@ -50,6 +49,7 @@ console.log(/-----------/);
 
 const palindrome = (str) => {
   let check = '';
+
   for (let i = str.length - 1; i >= 0; --i) {
     check += str[i];
   }
@@ -71,9 +71,8 @@ const min1 = (a, b) => {
 
 console.log(min1(1, 7));
 
-const min2 = (a, b) => {
-  return a < b ? a : b;
-};
+const min2 = (a, b) => a < b ? a : b;
+
 console.log(min2(1, 7));
 console.log(/-----------/);
 
@@ -94,7 +93,7 @@ const max2 = (a, y) => {
 console.log(max2(100, 5));
 console.log(/-----------/);
 
-const arrow3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
-const changeZero = (number) => String(number).replaceAll('0', 'zero');
+const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
+const changeZero = (str) => String(str).replaceAll('0', 'zero');
 
-console.log(changeZero(arrow3));
+console.log(changeZero(array3));
