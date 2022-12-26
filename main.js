@@ -28,19 +28,18 @@ for (let i = 0; i < arr.length; i++) {
   result *= arr[i];
 }
 console.log(result);
-console.log(/-----------/);
 
-const arrow = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < arrow.length; i++) {
-  if (arrow[i] > 5 && arrow[i] < 10) {
-    console.log(arrow[i]);
+const array = [2, 5, 8, 15, 0, 6, 20, 3];
+
+for (let i = 0; i < array.length; i++) {
+  if (array[i] > 5 && array[i] < 10) {
+    console.log(array[i]);
   }
 }
-console.log(/-----------/);
 
-const arrow2 = [2, 5, 8, 15, 0, 6, 20, 3];
-for (let i = 0; i < arrow2.length; i++) {
-  if (arrow2[i] % 2 == 0) {
-    console.log(arrow2[i]);
+const array2 = [2, 5, 8, 15, 0, 6, 20, 3];
+for (let i = 0; i < array2.length; i++) {
+  if (array2[i] % 2 === 0) {
+    console.log(array2[i]);
   }
 }
