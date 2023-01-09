@@ -71,7 +71,7 @@ const min1 = (a, b) => {
 
 console.log(min1(1, 7));
 
-const min2 = (a, b) => a < b ? a : b;
+const min2 = (a, b) => (a < b ? a : b);
 
 console.log(min2(1, 7));
 console.log(/-----------/);
@@ -97,3 +97,27 @@ const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
 const changeZero = (str) => String(str).replaceAll('0', 'zero');
 
 console.log(changeZero(array3));
+//Lesson-4
+const sum = (a) => (b) => a + b;
+console.log(sum(5)(2));
+
+const text = document.getElementsByTagName('p');
+
+const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+for (let i = 0; i < text.length; i++) {
+  text[i].addEventListener('click', func());
+}
+
+function func() {
+  let i = 0;
+
+  return function () {
+    this.style.color = getColor[i];
+    i++;
+
+    if (i === getColor.length) {
+      i = 0;
+    }
+  };
+}
