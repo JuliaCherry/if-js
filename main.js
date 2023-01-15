@@ -1,3 +1,5 @@
+import sum from '/src/module.js';
+
 let user = 'John Doe';
 console.log(user);
 
@@ -98,7 +100,7 @@ const changeZero = (str) => String(str).replaceAll('0', 'zero');
 
 console.log(changeZero(array3));
 //Lesson-4
-const sum = (a) => (b) => a + b;
+
 console.log(sum(5)(2));
 
 const text = document.getElementsByTagName('p');

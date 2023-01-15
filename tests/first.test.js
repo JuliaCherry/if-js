@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-undef
-test('My first test', () => {
-  expect(Math.max(1, 5, 10)).toBe(10);
+import sum from '../src/module.js';
+
+test('пять плюс два равно семь', () => {
+  expect(sum(5)(2)).toBe(7);
 });
