@@ -123,3 +123,71 @@ function func() {
     }
   };
 }
+console.log(/--lesson-5--/);
+function changeDate(date) {
+  const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
+  const newDate = date.replace(re, '$3.$2.$1');
+  console.log(newDate);
+}
+const date = '2023-01-17';
+changeDate(date);
+
+console.log(/--------/);
+const data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
+function search(str) {
+  const array = [];
+
+  for (let i = 0; i < data.length; i++) {
+    for (const index in data[i]) {
+      const result = data[i][index].match(str);
+
+      if (result !== null) {
+        array.push(data[i]);
+      }
+    }
+  }
+  return array;
+}
+//запуталась, не понимаю, как в строку вывезти
+console.log(search('Rus'));
