@@ -71,7 +71,7 @@ const min1 = (a, b) => {
 
 console.log(min1(1, 7));
 
-const min2 = (a, b) => a < b ? a : b;
+const min2 = (a, b) => (a < b ? a : b);
 
 console.log(min2(1, 7));
 console.log(/-----------/);
