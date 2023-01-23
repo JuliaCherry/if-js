@@ -1,4 +1,4 @@
-import sum from '/src/module.js';
+import { sum } from '/src/module.js';
 
 let user = 'John Doe';
 console.log(user);
@@ -66,9 +66,8 @@ console.log(/-----------/);
 const min1 = (a, b) => {
   if (a < b) {
     return a;
-  } else {
-    return b;
   }
+  return b;
 };
 
 console.log(min1(1, 7));
@@ -81,24 +80,31 @@ console.log(/-----------/);
 const max1 = (a, y) => {
   if (a > y) {
     return a;
-  } else {
-    return y;
   }
+  return y;
 };
 
 console.log(max1(100, 5));
 
-const max2 = (a, y) => {
-  return a > y ? a : y;
-};
+const max2 = (a, y) => (a > y ? a : y);
 
 console.log(max2(100, 5));
 console.log(/-----------/);
 
 const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
-const changeZero = (str) => String(str).replaceAll('0', 'zero');
+const changeZero = (array) =>
+  array.join(',').replaceAll('0', 'zero').split(',');
 
+const changeZero2 = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    if (String(array[i]).includes('0')) {
+      array[i] = String(array[i]).replace(/0/g, 'zero');
+    }
+  }
+  return array;
+};
 console.log(changeZero(array3));
+console.log(changeZero2(array3));
 //Lesson-4
 
 console.log(sum(5)(2));
@@ -107,19 +113,20 @@ const text = document.getElementsByTagName('p');
 
 const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
-for (let i = 0; i < text.length; i++) {
-  text[i].addEventListener('click', func());
-}
-
-function func() {
+const calculateColor = () => {
   let i = 0;
 
-  return function () {
-    this.style.color = getColor[i];
-    i++;
-
+  return (event) => {
     if (i === getColor.length) {
       i = 0;
     }
+
+    event.target.style.color = getColor[i];
+
+    i++;
   };
+};
+
+for (let i = 0; i < text.length; i++) {
+  text[i].addEventListener('click', calculateColor());
 }
