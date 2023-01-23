@@ -92,6 +92,7 @@ console.log(max2(100, 5));
 console.log(/-----------/);
 
 const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
+
 const changeZero = (array) =>
   array.join(',').replaceAll('0', 'zero').split(',');
 
@@ -101,10 +102,13 @@ const changeZero2 = (array) => {
       array[i] = String(array[i]).replace(/0/g, 'zero');
     }
   }
+
   return array;
 };
+
 console.log(changeZero(array3));
 console.log(changeZero2(array3));
+
 //Lesson-4
 
 console.log(sum(5)(2));
