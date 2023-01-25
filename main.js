@@ -193,7 +193,7 @@ const data = [
   },
 ];
 
-function search(str) {
+const search = str => {
   const array = [];
 
   for (let i = 0; i < data.length; i++) {
@@ -207,6 +207,6 @@ function search(str) {
   }
 
   return array;
-}
+};
 
 console.log(search('Ger'));
