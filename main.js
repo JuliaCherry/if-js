@@ -66,9 +66,8 @@ console.log(/-----------/);
 const min1 = (a, b) => {
   if (a < b) {
     return a;
-  } else {
-    return b;
   }
+  return b;
 };
 
 console.log(min1(1, 7));
@@ -81,24 +80,35 @@ console.log(/-----------/);
 const max1 = (a, y) => {
   if (a > y) {
     return a;
-  } else {
-    return y;
   }
+  return y;
 };
 
 console.log(max1(100, 5));
 
-const max2 = (a, y) => {
-  return a > y ? a : y;
-};
+const max2 = (a, y) => (a > y ? a : y);
 
 console.log(max2(100, 5));
 console.log(/-----------/);
 
 const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
-const changeZero = (str) => String(str).replaceAll('0', 'zero');
+
+const changeZero = (array) =>
+  array.join(', ').replaceAll('0', 'zero').split(', ');
+
+const changeZero2 = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    if (String(array[i]).includes('0')) {
+      array[i] = String(array[i]).replace(/0/g, 'zero');
+    }
+  }
+
+  return array;
+};
 
 console.log(changeZero(array3));
+console.log(changeZero2(array3));
+
 //Lesson-4
 
 console.log(sum(5)(2));
@@ -107,32 +117,39 @@ const text = document.getElementsByTagName('p');
 
 const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
-for (let i = 0; i < text.length; i++) {
-  text[i].addEventListener('click', func());
-}
-
-function func() {
+const calculateColor = () => {
   let i = 0;
 
-  return function () {
-    this.style.color = getColor[i];
-    i++;
-
+  return (event) => {
     if (i === getColor.length) {
       i = 0;
     }
+
+    event.target.style.color = getColor[i];
+
+    i++;
   };
+};
+
+for (let i = 0; i < text.length; i++) {
+  text[i].addEventListener('click', calculateColor());
 }
+
 console.log(/--lesson-5--/);
+
 function changeDate(date) {
   const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
   const newDate = date.replace(re, '$3.$2.$1');
+
   console.log(newDate);
 }
+
 const date = '2023-01-17';
+
 changeDate(date);
 
 console.log(/--------/);
+
 const data = [
   {
     country: 'Russia',
@@ -175,19 +192,21 @@ const data = [
     hotel: 'Hotel Rehberge Berlin Mitte',
   },
 ];
+
 function search(str) {
   const array = [];
 
   for (let i = 0; i < data.length; i++) {
-    for (const index in data[i]) {
-      const result = data[i][index].match(str);
+    for (const key in data[i]) {
+      const searchResult = data[i][key].match(str);
 
-      if (result !== null) {
-        array.push(data[i]);
+      if (searchResult !== null) {
+        array.push(Object.values(data[i]).join(', '));
       }
     }
   }
+
   return array;
 }
-//запуталась, не понимаю, как в строку вывезти
-console.log(search('Rus'));
+
+console.log(search('Ger'));
