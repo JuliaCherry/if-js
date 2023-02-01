@@ -137,7 +137,7 @@ for (let i = 0; i < text.length; i++) {
 
 ///lesson-5
 
-const changeDate = date => {
+const changeDate = (date) => {
   const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
   const newDate = date.replace(re, '$3.$2.$1');
 
@@ -191,7 +191,7 @@ const data = [
   },
 ];
 
-const search = str => {
+const search = (str) => {
   const array = [];
 
   for (let i = 0; i < data.length; i++) {
