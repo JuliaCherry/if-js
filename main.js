@@ -1,4 +1,4 @@
-import sum from '/src/module.js';
+import { sum } from '/src/module.js';
 
 let user = 'John Doe';
 console.log(user);
@@ -135,20 +135,16 @@ for (let i = 0; i < text.length; i++) {
   text[i].addEventListener('click', calculateColor());
 }
 
-console.log(/--lesson-5--/);
-
-function changeDate(date) {
+const changeDate = (date) => {
   const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
   const newDate = date.replace(re, '$3.$2.$1');
 
   console.log(newDate);
-}
+};
 
 const date = '2023-01-17';
 
 changeDate(date);
-
-console.log(/--------/);
 
 const data = [
   {
@@ -211,7 +207,7 @@ const search = (str) => {
 
 console.log(search('Ger'));
 
-console.log(/--lesson-5--/);
+//lesson-5
 
 const palindrome2 = (str) => str === str.split('').reverse().join('');
 
