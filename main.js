@@ -94,7 +94,7 @@ console.log(/-----------/);
 const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
 
 const changeZero = (array) =>
-  array.join(', ').replaceAll('0', 'zero').split(', ');
+  array.join(',').replaceAll('0', 'zero').split(',');
 
 const changeZero2 = (array) => {
   for (let i = 0; i < array.length; i++) {
