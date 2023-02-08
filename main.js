@@ -94,7 +94,7 @@ console.log(/-----------/);
 const array3 = [2, 15, 80, 0, 13, 100, 9, 7, 23, 60];
 
 const changeZero = (array) =>
-  array.join(',').replaceAll('0', 'zero').split(',');
+  array.join(', ').replaceAll('0', 'zero').split(', ');
 
 const changeZero2 = (array) => {
   for (let i = 0; i < array.length; i++) {
@@ -134,3 +134,77 @@ const calculateColor = () => {
 for (let i = 0; i < text.length; i++) {
   text[i].addEventListener('click', calculateColor());
 }
+
+///lesson-5
+
+const changeDate = (date) => {
+  const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
+  const newDate = date.replace(re, '$3.$2.$1');
+
+  console.log(newDate);
+};
+
+const date = '2023-01-17';
+
+changeDate(date);
+
+const data = [
+  {
+    country: 'Russia',
+    city: 'Saint Petersburg',
+    hotel: 'Hotel Leopold',
+  },
+  {
+    country: 'Spain',
+    city: 'Santa Cruz de Tenerife',
+    hotel: 'Apartment Sunshine',
+  },
+  {
+    country: 'Slowakia',
+    city: 'Vysokie Tatry',
+    hotel: 'Villa Kunerad',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hostel Friendship',
+  },
+  {
+    country: 'Indonesia',
+    city: 'Bali',
+    hotel: 'Ubud Bali Resort&SPA',
+  },
+  {
+    country: 'Netherlands',
+    city: 'Rotterdam',
+    hotel: 'King Kong Hostel',
+  },
+  {
+    country: 'Marocco',
+    city: 'Ourika',
+    hotel: 'Rokoko Hotel',
+  },
+  {
+    country: 'Germany',
+    city: 'Berlin',
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
+];
+
+const search = (str) => {
+  const array = [];
+
+  for (let i = 0; i < data.length; i++) {
+    for (const key in data[i]) {
+      const searchResult = data[i][key].match(str);
+
+      if (searchResult !== null) {
+        array.push(Object.values(data[i]).join(', '));
+      }
+    }
+  }
+
+  return array;
+};
+
+console.log(search('Ger'));
