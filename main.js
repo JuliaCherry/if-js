@@ -135,16 +135,9 @@ for (let i = 0; i < text.length; i++) {
   text[i].addEventListener('click', calculateColor());
 }
 
-const changeDate = (date) => {
-  const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
-  const newDate = date.replace(re, '$3.$2.$1');
-
-  console.log(newDate);
-};
-
-const date = '2023-01-17';
-
-changeDate(date);
+const date = '2022-01-17';
+const reverseResult = date.split('-').reverse().join('.');
+console.log(reverseResult);
 
 const data = [
   {
