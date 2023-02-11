@@ -368,25 +368,39 @@ const hotels = [
 ];
 
 const searching = (place) => {
-  const result = hotels.filter((location) =>
-    Object.values(location).includes(place),
-  );
+  const result = [];
 
-  console.log(result);
+  hotels.forEach((location) => {
+    if (Object.values(location).join().includes(place)) {
+      result.push(Object.values(location).join(', '));
+    }
+  });
+
+  return result;
 };
 
-searching('Germany');
+console.log(searching('er'));
 
-const searchCountries = (elements, hotels) => {
-  if (!Object.hasOwn(hotels.country)) {
-    elements[hotels.country] = [];
-  }
+const uniqueCountries = (data) =>
+  data.reduce((result, hotels) => {
+    if (!Object.hasOwn(hotels.country)) {
+      result[hotels.country] = [];
+    }
 
-  elements[hotels.country].push(hotels.city);
+    result[hotels.country].push(hotels.city);
 
-  return elements;
-};
+    return result;
+  }, {});
 
-const uniqueCountries = hotels.reduce(searchCountries, {});
+console.log(uniqueCountries(hotels));
 
-console.log(uniqueCountries);
+const searchUnique = (data) =>
+  data.reduce((result, hotels) => {
+    result[hotels.country]
+      ? result[hotels.country].push(hotels.city)
+      : (result[hotels.country] = [hotels.city]);
+
+    return result;
+  }, {});
+
+console.log(searchUnique(hotels));
