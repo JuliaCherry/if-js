@@ -135,16 +135,9 @@ for (let i = 0; i < text.length; i++) {
   text[i].addEventListener('click', calculateColor());
 }
 
-const changeDate = (date) => {
-  const re = /(?<year>\d{4})-(?<month>\d{1,2})-(?<day>\d{1,2})/;
-  const newDate = date.replace(re, '$3.$2.$1');
-
-  console.log(newDate);
-};
-
-const date = '2023-01-17';
-
-changeDate(date);
+const date = '2022-01-17';
+const reverseResult = date.split('-').reverse().join('.');
+console.log(reverseResult);
 
 const data = [
   {
@@ -375,28 +368,42 @@ const hotels = [
 ];
 
 const searching = (place) => {
-  const result = hotels.filter((location) =>
-    Object.values(location).includes(place),
-  );
+  const result = [];
 
-  console.log(result);
+  hotels.forEach((location) => {
+    if (Object.values(location).join().includes(place)) {
+      result.push(Object.values(location).join(', '));
+    }
+  });
+
+  return result;
 };
 
-searching('Germany');
+console.log(searching('erm'));
 
-const searchCountries = (elements, hotels) => {
-  if (!Object.hasOwn(hotels.country)) {
-    elements[hotels.country] = [];
-  }
+const uniqueCountries = (data) =>
+  data.reduce((result, hotels) => {
+    if (!Object.hasOwn(hotels.country)) {
+      result[hotels.country] = [];
+    }
 
-  elements[hotels.country].push(hotels.city);
+    result[hotels.country].push(hotels.city);
 
-  return elements;
-};
+    return result;
+  }, {});
 
-const uniqueCountries = hotels.reduce(searchCountries, {});
+console.log(uniqueCountries(hotels));
 
-console.log(uniqueCountries);
+const searchUnique = (data) =>
+  data.reduce((result, hotels) => {
+    result[hotels.country]
+      ? result[hotels.country].push(hotels.city)
+      : (result[hotels.country] = [hotels.city]);
+
+    return result;
+  }, {});
+
+console.log(searchUnique(hotels));
 
 //-------//
 
@@ -441,7 +448,7 @@ const deepEqual = (object1, object2) => {
     return false;
   }
 
-  for (let i = 0; i < props1.length; i += 1) {
+  for (let i = 0; i < props1.length; i++) {
     const prop = props1[i];
     const bothAreObjects =
       typeof object1[prop] === 'object' && typeof object2[prop] === 'object';
