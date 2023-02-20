@@ -379,7 +379,7 @@ const searching = (place) => {
   return result;
 };
 
-console.log(searching('erm'));
+console.log(searching('er'));
 
 const uniqueCountries = (data) =>
   data.reduce((result, hotels) => {
@@ -405,7 +405,7 @@ const searchUnique = (data) =>
 
 console.log(searchUnique(hotels));
 
-//-------//
+//--7---//
 
 const obj1 = {
   a: 'a',
@@ -417,7 +417,6 @@ const obj1 = {
     },
   },
 };
-
 const obj2 = {
   b: {
     c: {
@@ -428,7 +427,6 @@ const obj2 = {
   },
   a: 'a',
 };
-
 const obj3 = {
   a: {
     c: {
@@ -443,7 +441,6 @@ const obj3 = {
 const deepEqual = (object1, object2) => {
   const props1 = Object.getOwnPropertyNames(object1);
   const props2 = Object.getOwnPropertyNames(object2);
-
   if (props1.length !== props2.length) {
     return false;
   }
