@@ -113,27 +113,27 @@ console.log(changeZero2(array3));
 
 console.log(sum(5)(2));
 
-const text = document.getElementsByTagName('p');
-
-const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-
-const calculateColor = () => {
-  let i = 0;
-
-  return (event) => {
-    if (i === getColor.length) {
-      i = 0;
-    }
-
-    event.target.style.color = getColor[i];
-
-    i++;
-  };
-};
-
-for (let i = 0; i < text.length; i++) {
-  text[i].addEventListener('click', calculateColor());
-}
+// const text = document.getElementsByTagName('p');
+//
+// const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+//
+// const calculateColor = () => {
+//   let i = 0;
+//
+//   return (event) => {
+//     if (i === getColor.length) {
+//       i = 0;
+//     }
+//
+//     event.target.style.color = getColor[i];
+//
+//     i++;
+//   };
+// };
+//
+// for (let i = 0; i < text.length; i++) {
+//   text[i].addEventListener('click', calculateColor());
+// }
 
 const date = '2022-01-17';
 const reverseResult = date.split('-').reverse().join('.');
@@ -535,3 +535,45 @@ class Students {
 }
 const students = new Students(studentsData);
 console.log(students.getInfo());
+
+//------9------//
+
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  currentColor: 0,
+
+  [Symbol.iterator]() {
+    return this;
+  },
+
+  next() {
+    if (this.currentColor < this.data.length) {
+      return {
+        done: false,
+        value: this.data[this.currentColor++],
+      };
+    }
+
+    if (this.currentColor <= this.data.length) {
+      this.currentColor = 0;
+
+      return {
+        done: false,
+        value: this.data[this.currentColor],
+      };
+    }
+  },
+};
+
+const changeStyle = (id) => (event) => {
+  event.target.style.color = colors.next(id).value;
+  return event;
+};
+
+text1.addEventListener('click', changeStyle({ ...colors }));
+text2.addEventListener('click', changeStyle({ ...colors }));
+text3.addEventListener('click', changeStyle({ ...colors }));
