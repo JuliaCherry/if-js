@@ -496,6 +496,7 @@ const studentsData = [
 class User {
   constructor({ firstName, lastName }) {
     this.firstName = firstName;
+
     this.lastName = lastName;
   }
   get fullName() {
@@ -506,7 +507,9 @@ class User {
 class Student extends User {
   constructor({ admissionYear, courseName, ...props }) {
     super(props);
+
     this.admissionYear = admissionYear;
+
     this.courseName = courseName;
   }
   get course() {
