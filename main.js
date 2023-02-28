@@ -569,10 +569,11 @@ const colors = {
   },
 };
 
-const changeStyle = (id) => (event) => {
-  event.target.style.color = colors.next(id).value;
-  return event;
-};
+const changeStyle = (colors) =>
+  function (event) {
+    event.target.style.color = colors.next().value;
+    return event;
+  };
 
 text1.addEventListener('click', changeStyle({ ...colors }));
 text2.addEventListener('click', changeStyle({ ...colors }));
