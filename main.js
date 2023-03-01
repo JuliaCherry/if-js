@@ -124,9 +124,7 @@ const calculateColor = () => {
     if (i === getColor.length) {
       i = 0;
     }
-
     event.target.style.color = getColor[i];
-
     i++;
   };
 };
@@ -463,3 +461,118 @@ const deepEqual = (object1, object2) => {
 
 console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, obj3));
+
+//----8----//
+
+const studentsData = [
+  {
+    firstName: 'Василий',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Java',
+  },
+  {
+    firstName: 'Иван',
+    lastName: 'Иванов',
+    admissionYear: 2018,
+    courseName: 'JavaScript',
+  },
+  {
+    firstName: 'Александр',
+    lastName: 'Федоров',
+    admissionYear: 2017,
+    courseName: 'Python',
+  },
+  {
+    firstName: 'Николай',
+    lastName: 'Петров',
+    admissionYear: 2019,
+    courseName: 'Android',
+  },
+];
+
+class User {
+  constructor({ firstName, lastName }) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  get fullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+class Student extends User {
+  constructor({ admissionYear, courseName, ...props }) {
+    super(props);
+    this.admissionYear = admissionYear;
+    this.courseName = courseName;
+  }
+  get course() {
+    return new Date().getFullYear() - this.admissionYear;
+  }
+}
+
+class Students {
+  constructor(studentsData) {
+    this.studentsData = studentsData;
+  }
+
+  getInfo() {
+    return this.studentsData
+      .sort((one, two) => new Student(one).course - new Student(two).course)
+      .map(
+        (value) =>
+          new User(value).fullName +
+          ' - ' +
+          new Student(value).courseName +
+          ', ' +
+          new Student(value).course +
+          ' курс',
+      );
+  }
+}
+const students = new Students(studentsData);
+console.log(students.getInfo());
+
+//------9------//
+
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  currentColor: 0,
+
+  [Symbol.iterator]() {
+    return this;
+  },
+
+  next() {
+    if (this.currentColor < this.data.length) {
+      return {
+        done: false,
+        value: this.data[this.currentColor++],
+      };
+    }
+
+    if (this.currentColor <= this.data.length) {
+      this.currentColor = 0;
+
+      return {
+        done: false,
+        value: this.data[this.currentColor],
+      };
+    }
+  },
+};
+
+const changeStyle = (colors) =>
+  function (event) {
+    event.target.style.color = colors.next().value;
+    return event;
+  };
+
+text1.addEventListener('click', changeStyle({ ...colors }));
+text2.addEventListener('click', changeStyle({ ...colors }));
+text3.addEventListener('click', changeStyle({ ...colors }));
