@@ -1,0 +1,96 @@
+.header__top-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1.6;
+  padding-top: 51px;
+}
+
+.logo__img {
+  width: 20.5rem;
+  height: 4rem;
+}
+
+.menu {
+  display: flex;
+  gap: 4.8rem;
+  align-items: center;
+}
+
+.menu__list {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.menu__link {
+  position: relative;
+  line-height: 2;
+}
+
+.menu__link::after {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background-color: var(--accent-yellow);
+  content: '';
+  transition: width 0.4s ease-out;
+}
+
+.menu__link:hover::after,
+.menu__link:focus::after {
+  width: 100%;
+}
+
+.menu__button-burger {
+  display: none;
+}
+
+.menu__button--theme {
+  width: 3rem;
+  height: 3rem;
+}
+
+.menu__button--account {
+  width: 4rem;
+  height: 4rem;
+}
+
+@media (max-width: 568px) {
+  .header__top-inner {
+    padding-top: 12px;
+  }
+
+  .logo__img {
+    width: 12.2rem;
+    height: 2.4rem;
+  }
+
+  .menu {
+    gap: 1.6rem;
+  }
+
+  .menu__list--hidden {
+    display: none;
+  }
+
+  .menu__button--theme {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
+  .menu__button--account {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  .menu__button-burger {
+    display: block;
+  }
+
+  .button-img {
+    width: 2.4rem;
+    height: 1.6rem;
+  }
+}
