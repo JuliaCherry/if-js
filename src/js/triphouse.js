@@ -61,7 +61,7 @@ const body = document.querySelector('body');
 
 const sectionHomes = document.createElement('section');
 sectionHomes.classList.add('homes');
-body.prepend(sectionHomes);
+body.append(sectionHomes);
 
 const container = document.createElement('div');
 container.classList.add('container');

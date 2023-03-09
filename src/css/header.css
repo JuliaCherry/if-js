@@ -43,7 +43,7 @@
   width: 100%;
 }
 
-.menu__button-burger {
+.menu__button--burger {
   display: none;
 }
 
@@ -85,7 +85,7 @@
     height: 2.4rem;
   }
 
-  .menu__button-burger {
+  .menu__button--burger {
     display: block;
   }
 

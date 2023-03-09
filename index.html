@@ -230,6 +230,179 @@
         </defs>
       </symbol>
     </svg>
+    <main class="top-section">
+      <div class="container">
+        <header class="header__top">
+          <div class="header__top-inner">
+            <div class="logo">
+              <a class="logo__home" href="#">
+                <svg class="logo__img">
+                  <use href="src/images/sprite.svg#logo" />
+                </svg>
+              </a>
+            </div>
+            <nav class="menu">
+              <div class="menu__list menu__list--hidden">
+                <a class="menu__link" href="#">Stays</a>
+                <a class="menu__link" href="#">Attractions</a>
+              </div>
+              <div class="menu__list menu__list-button">
+                <button class="menu__button" type="submit">
+                  <svg class="menu__button menu__button--theme">
+                    <use href="src/images/sprite.svg#theme" />
+                  </svg>
+                </button>
+                <button class="menu__button" type="submit">
+                  <svg class="menu__button menu__button--account">
+                    <use href="src/images/sprite.svg#account" />
+                  </svg>
+                </button>
+                <button class="menu__button menu__button--burger" type="submit">
+                  <svg class="button-img">
+                    <use href="src/images/sprite.svg#burger" />
+                  </svg>
+                </button>
+              </div>
+            </nav>
+          </div>
+        </header>
+      </div>
+      <div class="container">
+        <section class="top-section__content">
+          <div class="top-section__content-inner">
+            <h1 class="top-section__content-tittle">
+              Discover stays <br />
+              to live, work or just relax
+            </h1>
+            <form class="search" action="/" method="get">
+              <div class="search__content search__content-destination">
+                <label
+                  class="search__content search__content--label-destination"
+                  for="destination"
+                >
+                </label>
+                <input
+                  class="search__content search__content--destination"
+                  type="text"
+                  id="destination"
+                  placeholder="New York"
+                />
+              </div>
+              <div class="search__content-sm">
+                <button class="search__content-icon">
+                  <svg class="search-icon">
+                    <use href="src/images/sprite.svg#search" />
+                  </svg>
+                </button>
+                <input
+                  class="search__content-sm search__content-sm--destination"
+                  type="text"
+                  id="destination-sm"
+                  placeholder="Your destination or hotel name"
+                />
+              </div>
+              <div class="search__content search__content-date">
+                <label
+                  class="search__content search__content--label-date"
+                  for="date"
+                >
+                </label>
+                <input
+                  class="search__content search__content--date"
+                  type="text"
+                  id="date"
+                  placeholder="Tue 15 Sept — Sat 19 Sept"
+                />
+              </div>
+              <div class="search__content-sm">
+                <div class="search__content-in-item">
+                  <label class="search__content-sm--label-in" for="date-in"
+                  >Check-in date
+                  </label>
+                  <input
+                    class="search__content-sm search__content-sm--in"
+                    type="text"
+                    id="date-in"
+                    placeholder="Tue 15 Sept 2020"
+                  />
+                </div>
+                <div class="search__content-out-item">
+                  <label class="search__content-sm--label-out" for="date-out"
+                  >Check-out date
+                  </label>
+                  <input
+                    class="search__content-sm search__content-sm--out"
+                    type="text"
+                    id="date-out"
+                    placeholder="Sat 19 Sept 2020"
+                  />
+                </div>
+              </div>
+              <div class="search__content search__content-pax">
+                <input
+                  class="search__content search__content--pax"
+                  type="text"
+                  id="pax"
+                  placeholder="2 Adults — 0 Children — 1 Room"
+                />
+              </div>
+              <div class="search__content-sm">
+                <div class="search__content-adult">
+                  <label class="search__content-sm--label-adult" for="adult"
+                  >Adults
+                  </label>
+                  <input
+                    class="search__content-sm search__content-sm--adult"
+                    type="text"
+                    id="adult"
+                    placeholder="2"
+                  />
+                </div>
+                <div class="search__content-child">
+                  <label class="search__content-sm--label-child" for="child"
+                  >Children
+                  </label>
+                  <input
+                    class="search__content-sm search__content-sm--child"
+                    type="text"
+                    id="child"
+                    placeholder="0"
+                  />
+                </div>
+                <div class="search__content-room">
+                  <label class="search__content-sm--label-room" for="room"
+                  >Rooms
+                  </label>
+                  <input
+                    class="search__content-sm search__content-sm--room"
+                    type="text"
+                    id="room"
+                    placeholder="1"
+                  />
+                </div>
+              </div>
+              <button class="search__content-btn" type="submit">Search</button>
+            </form>
+            <div class="social">
+              <div class="social__item">
+                <a class="social__item-link" href="#">
+                  <svg class="social__item social__item--google-play">
+                    <use href="#googleplay" />
+                  </svg>
+                </a>
+              </div>
+              <div class="social__item">
+                <a class="social__item-link" href="#">
+                  <svg class="social__item social__item--app-store">
+                    <use href="src/images/sprite.svg#appstore" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
     <script type="module" src="src/js/triphouse.js"></script>
     <script type="module" src="src/js/module.js"></script>
     <script type="module" src="src/js/main.js"></script>
