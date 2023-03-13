@@ -1,0 +1,30 @@
+.top-section {
+  background-image: url(../images/background.png);
+  min-height: 100vh;
+  background-size: cover;
+}
+
+.top-section__content-inner {
+  padding-top: 196px;
+  padding-bottom: 120px;
+}
+
+.top-section__content-tittle {
+  font-size: 5rem;
+  font-weight: 500;
+  color: var(--general-white);
+  padding-bottom: 145px;
+  line-height: 1.15;
+}
+
+@media (max-width: 568px) {
+  .top-section__content-inner {
+    padding-top: 5.2rem;
+    padding-bottom: 4rem;
+  }
+
+  .top-section__content-tittle {
+    font-size: 3rem;
+    padding-bottom: 3.1rem;
+  }
+}

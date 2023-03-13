@@ -1,0 +1,22 @@
+.social {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding-top: 120px;
+}
+
+.social__item--google-play {
+  width: 13.5rem;
+  height: 4rem;
+}
+
+.social__item--app-store {
+  width: 12rem;
+  height: 4rem;
+}
+
+@media (max-width: 568px) {
+  .social {
+    padding-top: 3.2rem;
+  }
+}
