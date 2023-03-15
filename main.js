@@ -494,24 +494,23 @@ const studentsData = [
 ];
 
 class User {
-  constructor({ firstName, lastName }) {
+  constructor(firstName, lastName) {
     this.firstName = firstName;
-
     this.lastName = lastName;
   }
+
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 }
 
 class Student extends User {
-  constructor({ admissionYear, courseName, ...props }) {
-    super(props);
-
+  constructor(admissionYear, courseName, firstName, lastName) {
+    super(firstName, lastName);
     this.admissionYear = admissionYear;
-
     this.courseName = courseName;
   }
+
   get course() {
     return new Date().getFullYear() - this.admissionYear;
   }
@@ -519,22 +518,29 @@ class Student extends User {
 
 class Students {
   constructor(studentsData) {
-    this.studentsData = studentsData;
+    this.studentsData = studentsData.reduce((acc, student) => {
+      acc.push(
+        new Student(
+          student.admissionYear,
+          student.courseName,
+          student.firstName,
+          student.lastName,
+        ),
+      );
+      return acc;
+    }, []);
+    console.log(this.studentsData);
   }
 
   getInfo() {
     return this.studentsData
-      .sort((one, two) => new Student(one).course - new Student(two).course)
+      .sort((a, b) => a.course - b.course)
       .map(
-        (value) =>
-          new User(value).fullName +
-          ' - ' +
-          new Student(value).courseName +
-          ', ' +
-          new Student(value).course +
-          ' курс',
+        (student) =>
+          `${student.fullName} - ${student.courseName}, ${student.course}`,
       );
   }
 }
+
 const students = new Students(studentsData);
 console.log(students.getInfo());
