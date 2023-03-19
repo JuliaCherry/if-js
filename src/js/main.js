@@ -1,4 +1,4 @@
-import { sum } from 'module.js';
+import { sum } from '/src/module.js';
 
 let user = 'John Doe';
 console.log(user);
@@ -494,21 +494,23 @@ const studentsData = [
 ];
 
 class User {
-  constructor({ firstName, lastName }) {
+  constructor(firstName, lastName) {
     this.firstName = firstName;
     this.lastName = lastName;
   }
+
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   }
 }
 
 class Student extends User {
-  constructor({ admissionYear, courseName, ...props }) {
-    super(props);
+  constructor(admissionYear, courseName, firstName, lastName) {
+    super(firstName, lastName);
     this.admissionYear = admissionYear;
     this.courseName = courseName;
   }
+
   get course() {
     return new Date().getFullYear() - this.admissionYear;
   }
@@ -516,23 +518,30 @@ class Student extends User {
 
 class Students {
   constructor(studentsData) {
-    this.studentsData = studentsData;
+    this.studentsData = studentsData.reduce((acc, student) => {
+      acc.push(
+        new Student(
+          student.admissionYear,
+          student.courseName,
+          student.firstName,
+          student.lastName,
+        ),
+      );
+      return acc;
+    }, []);
+    console.log(this.studentsData);
   }
 
   getInfo() {
     return this.studentsData
-      .sort((one, two) => new Student(one).course - new Student(two).course)
+      .sort((a, b) => a.course - b.course)
       .map(
-        (value) =>
-          new User(value).fullName +
-          ' - ' +
-          new Student(value).courseName +
-          ', ' +
-          new Student(value).course +
-          ' курс',
+        (student) =>
+          `${student.fullName} - ${student.courseName}, ${student.course}`,
       );
   }
 }
+
 const students = new Students(studentsData);
 console.log(students.getInfo());
 
@@ -542,39 +551,43 @@ const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 
-const colors = {
-  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
-  currentColor: 0,
+const iteratorOptions = {
+  colors: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  from: 0,
+  to: 4,
 
   [Symbol.iterator]() {
     return this;
   },
 
   next() {
-    if (this.currentColor < this.data.length) {
+    if (this.current === undefined) {
+      this.current = this.from;
+    }
+
+    if (this.current < this.to + 1) {
       return {
         done: false,
-        value: this.data[this.currentColor++],
+        value: this.colors[this.current++],
       };
     }
 
-    if (this.currentColor <= this.data.length) {
-      this.currentColor = 0;
+    if (this.current <= this.to + 1) {
+      this.current = 0;
 
       return {
         done: false,
-        value: this.data[this.currentColor],
+        value: this.colors[this.current],
       };
     }
   },
 };
 
-const changeStyle = (colors) =>
-  function (event) {
-    event.target.style.color = colors.next().value;
-    return event;
-  };
+const changeStyle = (colors) => (event) => {
+  event.target.style.color = colors.next().value;
+  return event;
+};
 
-text1.addEventListener('click', changeStyle({ ...colors }));
-text2.addEventListener('click', changeStyle({ ...colors }));
-text3.addEventListener('click', changeStyle({ ...colors }));
+text1.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text2.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text3.addEventListener('click', changeStyle({ ...iteratorOptions }));
