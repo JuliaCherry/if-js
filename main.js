@@ -113,27 +113,25 @@ console.log(changeZero2(array3));
 
 console.log(sum(5)(2));
 
-const text = document.getElementsByTagName('p');
-
-const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-
-const calculateColor = () => {
-  let i = 0;
-
-  return (event) => {
-    if (i === getColor.length) {
-      i = 0;
-    }
-
-    event.target.style.color = getColor[i];
-
-    i++;
-  };
-};
-
-for (let i = 0; i < text.length; i++) {
-  text[i].addEventListener('click', calculateColor());
-}
+// const text = document.getElementsByTagName('p');
+//
+// const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+//
+// const calculateColor = () => {
+//   let i = 0;
+//
+//   return (event) => {
+//     if (i === getColor.length) {
+//       i = 0;
+//     }
+//     event.target.style.color = getColor[i];
+//     i++;
+//   };
+// };
+//
+// for (let i = 0; i < text.length; i++) {
+//   text[i].addEventListener('click', calculateColor());
+// }
 
 const date = '2022-01-17';
 const reverseResult = date.split('-').reverse().join('.');
@@ -544,3 +542,50 @@ class Students {
 
 const students = new Students(studentsData);
 console.log(students.getInfo());
+
+//------9------//
+
+const text1 = document.getElementById('text1');
+const text2 = document.getElementById('text2');
+const text3 = document.getElementById('text3');
+
+const iteratorOptions = {
+  colors: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  from: 0,
+  to: 4,
+
+  [Symbol.iterator]() {
+    return this;
+  },
+
+  next() {
+    if (this.current === undefined) {
+      this.current = this.from;
+    }
+
+    if (this.current < this.to + 1) {
+      return {
+        done: false,
+        value: this.colors[this.current++],
+      };
+    }
+
+    if (this.current <= this.to + 1) {
+      this.current = 0;
+
+      return {
+        done: false,
+        value: this.colors[this.current],
+      };
+    }
+  },
+};
+
+const changeStyle = (colors) => (event) => {
+  event.target.style.color = colors.next().value;
+  return event;
+};
+
+text1.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text2.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text3.addEventListener('click', changeStyle({ ...iteratorOptions }));
