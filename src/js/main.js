@@ -1,4 +1,4 @@
-import { sum } from '/src/module.js';
+import { sum } from '../js/module.js';
 
 let user = 'John Doe';
 console.log(user);
