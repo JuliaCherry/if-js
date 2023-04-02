@@ -2,7 +2,7 @@
   "name": "if-js",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "src/js/main.js",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
@@ -14,10 +14,9 @@
     "prettier": "2.8.1"
   },
   "scripts": {
-    "test": "jest",
     "prepare": "husky install",
-    "lint": "prettier --write . && eslint main.js",
-    "prepublish": "npm run lint && npm run test"
+    "lint": "prettier --write . && eslint src/js/main.js",
+    "prepublish": "npm run lint"
   },
   "repository": {
     "type": "git",

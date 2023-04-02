@@ -1,2 +1,51 @@
-{"C:\\dev\\intellect-fox\\if-js\\src\\module.js": {"path":"C:\\dev\\intellect-fox\\if-js\\src\\module.js","statementMap":{"0":{"start":{"line":1,"column":19},"end":{"line":1,"column":38}},"1":{"start":{"line":1,"column":26},"end":{"line":1,"column":38}},"2":{"start":{"line":1,"column":33},"end":{"line":1,"column":38}}},"fnMap":{"0":{"name":"(anonymous_0)","decl":{"start":{"line":1,"column":19},"end":{"line":1,"column":20}},"loc":{"start":{"line":1,"column":26},"end":{"line":1,"column":38}},"line":1},"1":{"name":"(anonymous_1)","decl":{"start":{"line":1,"column":26},"end":{"line":1,"column":27}},"loc":{"start":{"line":1,"column":33},"end":{"line":1,"column":38}},"line":1}},"branchMap":{},"s":{"0":1,"1":1,"2":1},"f":{"0":1,"1":1},"b":{},"_coverageSchema":"1a1c01bbd47fc00a2c39e90264f33305004495a9","hash":"2f9164c92e1d4927006a7b1ebff4ed7e769bde95"}
+{
+  "C:\\dev\\intellect-fox\\if-js\\src\\js\\module.js": {
+    "path": "C:\\dev\\intellect-fox\\if-js\\src\\js\\module.js",
+    "statementMap": {
+      "0": {
+        "start": { "line": 1, "column": 19 },
+        "end": { "line": 1, "column": 38 }
+      },
+      "1": {
+        "start": { "line": 1, "column": 26 },
+        "end": { "line": 1, "column": 38 }
+      },
+      "2": {
+        "start": { "line": 1, "column": 33 },
+        "end": { "line": 1, "column": 38 }
+      }
+    },
+    "fnMap": {
+      "0": {
+        "name": "(anonymous_0)",
+        "decl": {
+          "start": { "line": 1, "column": 19 },
+          "end": { "line": 1, "column": 20 }
+        },
+        "loc": {
+          "start": { "line": 1, "column": 26 },
+          "end": { "line": 1, "column": 38 }
+        },
+        "line": 1
+      },
+      "1": {
+        "name": "(anonymous_1)",
+        "decl": {
+          "start": { "line": 1, "column": 26 },
+          "end": { "line": 1, "column": 27 }
+        },
+        "loc": {
+          "start": { "line": 1, "column": 33 },
+          "end": { "line": 1, "column": 38 }
+        },
+        "line": 1
+      }
+    },
+    "branchMap": {},
+    "s": { "0": 1, "1": 1, "2": 1 },
+    "f": { "0": 1, "1": 1 },
+    "b": {},
+    "_coverageSchema": "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    "hash": "4d047b10cab94d70ed390e10615f851ff70074b5"
+  }
 }

@@ -1,0 +1,60 @@
+.homes {
+  background-color: var(--bg-color-main);
+}
+
+.homes__container-item {
+  display: flex;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  align-items: center;
+  flex-direction: column;
+  gap: 10.6rem;
+  position: relative;
+}
+
+.homes__container-content {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.homes__container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.homes__container-name {
+  color: var(--accent-blue);
+}
+
+.homes__container-country {
+  color: var(--stroke-color-additional);
+}
+
+.arrow-homes {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--stroke-color-main);
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  box-shadow: 2px 3px 20px 2px rgb(34 60 80 / 20%);
+}
+
+.arrow-homes::before {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  content: '';
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  border-left: 2px solid var(--text-color-main);
+  transform: rotate(-135deg);
+  border-bottom: 2px solid var(--text-color-main);
+}

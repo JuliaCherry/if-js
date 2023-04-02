@@ -1,4 +1,4 @@
-import { sum } from '/src/module.js';
+import { sum } from '../js/module.js';
 
 let user = 'John Doe';
 console.log(user);
@@ -113,25 +113,27 @@ console.log(changeZero2(array3));
 
 console.log(sum(5)(2));
 
-// const text = document.getElementsByTagName('p');
-//
-// const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-//
-// const calculateColor = () => {
-//   let i = 0;
-//
-//   return (event) => {
-//     if (i === getColor.length) {
-//       i = 0;
-//     }
-//     event.target.style.color = getColor[i];
-//     i++;
-//   };
-// };
-//
-// for (let i = 0; i < text.length; i++) {
-//   text[i].addEventListener('click', calculateColor());
-// }
+const text = document.getElementsByTagName('p');
+
+const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+const calculateColor = () => {
+  let i = 0;
+
+  return (event) => {
+    if (i === getColor.length) {
+      i = 0;
+    }
+
+    event.target.style.color = getColor[i];
+
+    i++;
+  };
+};
+
+for (let i = 0; i < text.length; i++) {
+  text[i].addEventListener('click', calculateColor());
+}
 
 const date = '2022-01-17';
 const reverseResult = date.split('-').reverse().join('.');

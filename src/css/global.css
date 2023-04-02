@@ -1,0 +1,132 @@
+:root {
+  --general-white: #fff;
+  --accent-yellow: #f5bd41;
+  --general-blue: #10367c;
+  --accent-blue: #3077c6;
+  --text-color-main: #383838;
+  --stroke-color-additional: #bfbfbf;
+  --bg-color-main: #eaf0f9;
+  --stroke-color-main: #f3f3f4;
+  --bg-color-section: #e5e5e5;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  line-height: 1;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: unset;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a {
+  color: var(--general-white);
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  font-size: 2.4rem;
+  color: var(--text-color-main);
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1264px;
+  padding: 0 1.6rem;
+}
+
+@media (max-width: 767px) {
+  .container {
+    max-width: 650px;
+  }
+}
+
+@media (max-width: 568px) {
+  .container {
+    max-width: none;
+  }
+}

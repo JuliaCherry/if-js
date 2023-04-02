@@ -1,0 +1,155 @@
+.advantages__container-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 88px;
+  padding-top: 120px;
+  padding-bottom: 114px;
+}
+
+.advantages__container-subtitle::after {
+  content: '';
+  display: block;
+  border-bottom: 0.4rem solid var(--accent-yellow);
+  width: 10rem;
+  padding-top: 2rem;
+  transform: translateX(104%);
+}
+
+.advantages__container-content {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  align-items: center;
+  width: 100%;
+}
+
+.advantages__container-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+  width: 25%;
+}
+
+.advantages__container-communication {
+  width: 8.3rem;
+  height: 8.3rem;
+}
+
+.advantages__container-support {
+  width: 7.5rem;
+  height: 9.2rem;
+}
+
+.advantages__container-booking {
+  width: 10rem;
+  height: 6.7rem;
+}
+
+.advantages__container-reviews {
+  width: 9.2rem;
+  height: 8.3rem;
+}
+
+.advantages__container-desk {
+  line-height: 1.4;
+}
+
+@media (max-width: 767px) {
+  .advantages__container-item {
+    padding-top: 2.4rem;
+    padding-bottom: 4rem;
+    gap: 3.2rem;
+  }
+
+  .advantages__container-content {
+    gap: 7.8rem;
+    flex-wrap: wrap;
+  }
+
+  .advantages__container-subtitle {
+    font-size: 2.8rem;
+  }
+
+  .advantages__container-subtitle::after {
+    transform: translateX(58%);
+  }
+
+  .advantages__container-desk {
+    font-size: 1.5rem;
+  }
+
+  .advantages__container-communication {
+    width: 5.8rem;
+    height: 58px;
+  }
+
+  .advantages__container-support {
+    width: 5.2rem;
+    height: 6.4rem;
+  }
+
+  .advantages__container-booking {
+    width: 7rem;
+    height: 4.7rem;
+  }
+
+  .advantages__container-reviews {
+    width: 6.4rem;
+    height: 5.8rem;
+  }
+
+  .advantages__container-image {
+    gap: 2.2rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 568px) {
+  .advantages__container-item {
+    padding: 24px 57px 40px;
+    gap: 32px;
+  }
+
+  .advantages__container-content {
+    gap: 3.2rem;
+  }
+
+  .advantages__container-subtitle {
+    font-size: 2.8rem;
+  }
+
+  .advantages__container-subtitle::after {
+    display: none;
+  }
+
+  .advantages__container-desk {
+    font-size: 1.5rem;
+  }
+
+  .advantages__container-communication {
+    width: 58px;
+    height: 58px;
+  }
+
+  .advantages__container-support {
+    width: 52px;
+    height: 64px;
+  }
+
+  .advantages__container-booking {
+    width: 70px;
+    height: 47px;
+  }
+
+  .advantages__container-reviews {
+    width: 64px;
+    height: 58px;
+  }
+
+  .advantages__container-image {
+    gap: 20px;
+    height: 104px;
+  }
+}
