@@ -63,7 +63,8 @@ const clickAdults = (e) => {
     plus.style.border = '1px solid #3077c6';
     plus.style.color = '#3077c6';
   }
-  changePax.textContent = `${targetAdultsInput.value}` + ' Adults     — ';
+  changePax.textContent =
+    `${targetAdultsInput.value}` + ' Adults — 0 Children — 1 Room ';
 };
 
 plus.addEventListener('click', clickAdults);
@@ -94,7 +95,8 @@ const clickChildBtn = (e) => {
     plusChild.style.border = '1px solid #3077c6';
     plusChild.style.color = '#3077c6';
   }
-  changePax.textContent = `${targetChildrenInput.value}` + ' Children   — ';
+  changePax.textContent =
+    '2 Adults —' + `${targetChildrenInput.value}` + ' Children — 1 Room ';
 };
 
 minusChild.addEventListener('click', clickChildBtn);
@@ -125,7 +127,8 @@ const clickRoom = (e) => {
     plusRoom.style.border = '1px solid #3077c6';
     plusRoom.style.color = '#3077c6';
   }
-  changePax.textContent = `${targetRoomsInput.value}` + ' Room';
+  changePax.textContent =
+    '2 Adults — 0 Children —' + `${targetRoomsInput.value}` + ' Room';
 };
 
 plusRoom.addEventListener('click', clickRoom);
