@@ -4,74 +4,57 @@
 
 .homes__container-item {
   display: flex;
-  padding-top: 130px;
-  padding-bottom: 112px;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
   align-items: center;
   flex-direction: column;
-}
-
-.homes__slider {
-  display: flex;
-  gap: 16px;
-  padding-bottom: 120px;
-}
-
-.homes__slider div:last-child {
+  gap: 10.6rem;
   position: relative;
 }
 
-.homes__slider div:last-child:after {
-  content: url(../images/sprite.svg#array);
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 125px;
-  left: 270px;
+.homes__container-content {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
 }
 
-.homes__slider p {
-  line-height: 28px;
-  color: #3077c6;
+.homes__container-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   padding-top: 24px;
 }
 
-.homes__slider p:last-child {
-  color: #bfbfbf;
+.homes__container-name {
+  color: var(--accent-blue);
 }
 
-@media (max-width: 568px) {
-  .homes__container-item {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
+.homes__container-country {
+  color: var(--stroke-color-additional);
+}
 
-  .homes__subtitle {
-    font-size: 2.8rem;
-  }
+.arrow-homes {
+  width: 4rem;
+  height: 4rem;
+  background-color: var(--stroke-color-main);
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  box-shadow: 2px 3px 20px 2px rgb(34 60 80 / 20%);
+}
 
-  .homes__slider {
-    padding-bottom: 4rem;
-  }
-
-  .homes__slider img {
-    max-width: 100%;
-  }
-
-  .homes__slider p {
-    line-height: 8px;
-    color: #3077c6;
-    padding-top: 8px;
-    font-size: 12px;
-  }
-
-  .homes__slider div:nth-child(odd) {
-    display: none;
-  }
-
-  .homes__slider div:last-child:after {
-    width: 28px;
-    height: 28px;
-    top: 54px;
-    left: 140px;
-  }
+.arrow-homes::before {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  content: '';
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 2px;
+  border-left: 2px solid var(--text-color-main);
+  transform: rotate(-135deg);
+  border-bottom: 2px solid var(--text-color-main);
 }
