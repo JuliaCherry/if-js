@@ -1,5 +1,3 @@
-import { sum } from './module.js';
-
 let user = 'John Doe';
 console.log(user);
 
@@ -111,6 +109,7 @@ console.log(changeZero2(array3));
 
 //Lesson-4
 
+const sum = (a) => (b) => a + b;
 console.log(sum(5)(2));
 
 const text = document.getElementsByTagName('p');
@@ -551,39 +550,43 @@ const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 
-const colors = {
-  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
-  currentColor: 0,
+const iteratorOptions = {
+  colors: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  from: 0,
+  to: 4,
 
   [Symbol.iterator]() {
     return this;
   },
 
   next() {
-    if (this.currentColor < this.data.length) {
+    if (this.current === undefined) {
+      this.current = this.from;
+    }
+
+    if (this.current < this.to + 1) {
       return {
         done: false,
-        value: this.data[this.currentColor++],
+        value: this.colors[this.current++],
       };
     }
 
-    if (this.currentColor <= this.data.length) {
-      this.currentColor = 0;
+    if (this.current <= this.to + 1) {
+      this.current = 0;
 
       return {
         done: false,
-        value: this.data[this.currentColor],
+        value: this.colors[this.current],
       };
     }
   },
 };
 
-const changeStyle = (colors) =>
-  function (event) {
-    event.target.style.color = colors.next().value;
-    return event;
-  };
+const changeStyle = (colors) => (event) => {
+  event.target.style.color = colors.next().value;
+  return event;
+};
 
-text1.addEventListener('click', changeStyle({ ...colors }));
-text2.addEventListener('click', changeStyle({ ...colors }));
-text3.addEventListener('click', changeStyle({ ...colors }));
+text1.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text2.addEventListener('click', changeStyle({ ...iteratorOptions }));
+text3.addEventListener('click', changeStyle({ ...iteratorOptions }));
