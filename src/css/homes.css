@@ -18,6 +18,11 @@
   gap: 16px;
 }
 
+.homes__container-img img {
+  width: 296px;
+  height: 296px;
+}
+
 .homes__container-text {
   display: flex;
   flex-direction: column;
