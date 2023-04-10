@@ -1,4 +1,6 @@
-fetch('https://if-student-api.onrender.com/api/hotels/popular')
+const hotelUrl = 'https://if-student-api.onrender.com/api/hotels/popular';
+
+fetch(hotelUrl)
   .then((response) => {
     if (!response.ok) {
       throw new Error(`${response.status} - ${response.statusText}`);
@@ -33,3 +35,7 @@ fetch('https://if-student-api.onrender.com/api/hotels/popular')
   .catch((err) => {
     console.log(err.message);
   });
+
+
+
+
