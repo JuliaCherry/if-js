@@ -133,3 +133,54 @@ const clickRoom = (e) => {
 
 plusRoom.addEventListener('click', clickRoom);
 minusRoom.addEventListener('click', clickRoom);
+
+// lesson 13
+
+const availableSection = document.querySelector('.available-hotels'); //sekcia
+const availableItems = document.querySelector('.available__hotels-item'); //fotki
+const errorSearch = document.querySelector('.available-hotels-error'); //error
+const getRequest = document.getElementById('destination'); //input
+const searchBtn = document.querySelector('.search__content-btn'); //knopka
+
+const showAvailableHotels = () => {
+  availableItems.innerHTML = '';
+  availableSection.style.display = 'block';
+
+  const url = new URL('https://if-student-api.onrender.com/api/hotels');
+  url.searchParams.append('search', `${getRequest.value}`);
+  fetch(url, {
+    method: 'GET',
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const hotelsItems = data
+        .map(({ name, city, country, imageUrl }) => {
+          return `<div class="available__hotels-img">
+        <img src=${imageUrl} alt="hotel-image"/>
+          <div class="available__hotels-text">
+          <p class="available__hotels-name"> ${name} </p>
+        <p class="available__hotels-country"> ${city}, ${country}</p>
+        </div>
+      </div>`;
+        })
+        .slice(0, 4)
+        .join('');
+      availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
+      if (data.length === 0) {
+        errorSearch.style.display = 'block';
+      } else {
+        errorSearch.style.display = 'none';
+      }
+    })
+    .catch((err) => console.error(err));
+};
+
+searchBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  showAvailableHotels();
+});
