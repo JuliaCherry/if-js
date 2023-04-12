@@ -184,3 +184,7 @@ searchBtn.addEventListener('click', (e) => {
   e.preventDefault();
   showAvailableHotels();
 });
+
+document.querySelector('.search__content-btn').onclick = () => {
+  document.getElementById('hotels').scrollIntoView({behavior: 'smooth'});
+};
