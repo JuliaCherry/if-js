@@ -1,10 +1,10 @@
 const inputPax = document.querySelector('.search__content-pax');
-const changePax = document.querySelector('.search__content--btn');
 const filterPax = document.querySelector('.filter');
 
 const focusPeople = () => {
   filterPax.classList.toggle('visible_filter');
 };
+
 inputPax.addEventListener('click', focusPeople);
 
 const plusChild = document.querySelector('.filter__pax-child button.plus');
@@ -38,10 +38,9 @@ const plus = document.querySelector('.filter__pax-count button.plus');
 const minusRoom = document.querySelector('.filter__pax-rooms button.minus');
 const plusRoom = document.querySelector('.filter__pax-rooms button.plus');
 
+const targetAdultsInput = document.querySelector('.filter__pax-adult input');
+
 const clickAdults = (e) => {
-  const targetAdultsInput = e.target.parentElement.querySelector(
-    '.filter__pax-adult input',
-  );
   if (e.target.classList.contains('plus')) {
     ++targetAdultsInput.value;
   } else if (e.target.classList.contains('minus')) {
@@ -63,17 +62,15 @@ const clickAdults = (e) => {
     plus.style.border = '1px solid #3077c6';
     plus.style.color = '#3077c6';
   }
-  changePax.textContent =
-    `${targetAdultsInput.value}` + ' Adults — 0 Children — 1 Room';
+  buttonTextChange();
 };
 
 plus.addEventListener('click', clickAdults);
 minus.addEventListener('click', clickAdults);
 
+const targetChildrenInput = document.querySelector('.filter__pax-child input');
+
 const clickChildBtn = (e) => {
-  const targetChildrenInput = e.target.parentElement.querySelector(
-    '.filter__pax-child input',
-  );
   if (e.target.classList.contains('plus')) {
     ++targetChildrenInput.value;
   } else if (e.target.classList.contains('minus')) {
@@ -95,17 +92,15 @@ const clickChildBtn = (e) => {
     plusChild.style.border = '1px solid #3077c6';
     plusChild.style.color = '#3077c6';
   }
-  changePax.textContent =
-    '2 Adults — ' + `${targetChildrenInput.value}` + ' Children — 1 Room';
+  buttonTextChange();
 };
 
 minusChild.addEventListener('click', clickChildBtn);
 plusChild.addEventListener('click', clickChildBtn);
 
+const targetRoomsInput = document.querySelector('.filter__pax-rooms input');
+
 const clickRoom = (e) => {
-  const targetRoomsInput = e.target.parentElement.querySelector(
-    '.filter__pax-rooms input',
-  );
   if (e.target.classList.contains('plus')) {
     ++targetRoomsInput.value;
   } else if (e.target.classList.contains('minus')) {
@@ -127,12 +122,16 @@ const clickRoom = (e) => {
     plusRoom.style.border = '1px solid #3077c6';
     plusRoom.style.color = '#3077c6';
   }
-  changePax.textContent =
-    '2 Adults — 0 Children — ' + `${targetRoomsInput.value}` + ' Room';
+  buttonTextChange();
 };
 
 plusRoom.addEventListener('click', clickRoom);
 minusRoom.addEventListener('click', clickRoom);
+
+const changePax = document.querySelector('.search__content--btn');
+function buttonTextChange() {
+  changePax.textContent = `${targetAdultsInput.value} Adults — ${targetChildrenInput.value} Children — ${targetRoomsInput.value}  Room`;
+}
 
 // lesson 13
 
