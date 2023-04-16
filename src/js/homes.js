@@ -35,7 +35,3 @@ fetch(hotelUrl)
   .catch((err) => {
     console.log(err.message);
   });
-
-
-
-
