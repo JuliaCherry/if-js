@@ -101,84 +101,89 @@
   line-height: 1.4;
 }
 
-.filter {
-  display: none;
-  width: 259px;
-  height: auto;
-  margin-top: 12px;
-  background-color: var(--general-white);
-  border-radius: 8px;
+.options {
+  padding: 22px 22px;
   position: absolute;
-  right: 254px;
-  padding: 22px;
-  color: #333333;
-}
-
-.visible_filter {
-  display: block;
-}
-
-.filter__pax {
+  border-radius: 8px;
   display: flex;
-  gap: 28px;
   flex-direction: column;
+  width: 259px;
+  background-color: #ffffff;
+  top: 76px;
+  right: 0;
 }
 
-.filter__pax-people {
-  font-size: 16px;
+.options-description-text {
+  display: flex;
+  align-items: center;
+}
+
+.options-text-div {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  line-height: 0.8;
+}
+
+.options-text {
+  font-size: 12px;
+}
+
+.options-items {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  font-size: 16px;
 }
 
-.filter__pax-adult {
+.options-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.filter__pax-child {
+.options-item-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 20px;
 }
 
-.filter__pax-rooms {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.filter__pax-count {
-  display: flex;
-}
-
-.filter__pax-count input {
-  width: 48px;
-  height: 30px;
-  border: none;
-  text-align: center;
-}
-
-.filter__pax-count button {
+.options-button {
+  color: #3077c6;
+  font-size: 18px;
   width: 30px;
   height: 30px;
   border: 1px solid #3077c6;
+  cursor: pointer;
+  transform: none;
+}
+
+.options-button:disabled {
+  color: #cecece;
+  border: 1px solid #cecece;
+}
+
+.options-button :disabled {
   color: #3077c6;
-  background-color: #ffffff;
-}
-
-.filter__pax-age {
-  font-size: 12px;
-  line-height: 14px;
-}
-
-.filter__pax-age select {
-  display: block;
+  font-size: 18px;
+  width: 30px;
   height: 30px;
-  width: 99px;
   border: 1px solid #3077c6;
-  margin-top: 12px;
+  cursor: pointer;
+  transform: none;
+}
+
+.options-child-age-select {
+  border: 1px solid #3077c6;
+  padding: 4px 8px;
+}
+
+.options-counter-number {
+  margin-top: 5px;
+}
+
+.options-select-items {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  column-gap: 10px;
 }
 
 @media (max-width: 767px) {
