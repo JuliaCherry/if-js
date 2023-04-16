@@ -185,5 +185,5 @@ searchBtn.addEventListener('click', (e) => {
 });
 
 document.querySelector('.search__content-btn').onclick = () => {
-  document.getElementById('hotels').scrollIntoView({behavior: 'smooth'});
+  document.getElementById('hotels').scrollIntoView({ behavior: 'smooth' });
 };
