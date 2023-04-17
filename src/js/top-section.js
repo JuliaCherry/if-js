@@ -1,137 +1,159 @@
-const inputPax = document.querySelector('.search__content-pax');
-const filterPax = document.querySelector('.filter');
-
-const focusPeople = () => {
-  filterPax.classList.toggle('visible_filter');
+const optionsData = {
+  adults: {
+    min: 1,
+    max: 30,
+    value: 1,
+  },
+  children: {
+    min: 0,
+    max: 10,
+    value: 0,
+  },
+  rooms: {
+    min: 1,
+    max: 30,
+    value: 1,
+  },
 };
 
-inputPax.addEventListener('click', focusPeople);
+const optionsButton = document.getElementById('search-options');
+const searchOptions = document.getElementById('search-options-container');
+optionsButton.textContent = `${optionsData.adults.value} Adults - ${optionsData.children.value} Children - ${optionsData.rooms.value} Room`;
 
-const plusChild = document.querySelector('.filter__pax-child button.plus');
-const minusChild = document.querySelector('.filter__pax-child button.minus');
-const childrenFilter = document.querySelector('.filter__pax-age');
-
-const showChildren = (e) => {
-  childrenFilter.style.display = 'block';
-  const targetInput = e.target.parentElement.querySelector('input');
-  if (targetInput.value >= 1 && targetInput.value <= 9) {
-    const select = document.querySelector('select').cloneNode(true);
-    document.querySelector('select').after(select);
-  }
+const createOptionsDiv = () => {
+  const optionsDiv = document.createElement('div');
+  optionsDiv.classList.add('options');
+  optionsDiv.setAttribute('id', 'options');
+  optionsDiv.innerHTML = `<div class="options-items" id="options-items"></div>
+      <div class="options-text-div" id="options-text-div"></div>
+      <div class="options-select-items" id="options-select-items"></div>`;
+  searchOptions.appendChild(optionsDiv);
+  createOptions();
+  optionsButton.removeEventListener('click', createOptionsDiv);
 };
 
-plusChild.addEventListener('click', showChildren);
+optionsButton.addEventListener('click', createOptionsDiv);
 
-const hideChildren = (e) => {
-  if (e.target.parentElement.querySelector('input').value < 2) {
-    childrenFilter.style.display = 'none';
-  } else {
-    const select = document.querySelector('.filter__pax-age select');
-    select.remove();
-  }
+const createOptions = () => {
+  const optionItems = document.getElementById('options-items');
+  Object.keys(optionsData).forEach((option) => {
+    const optionItem = document.createElement('div');
+    optionItem.classList.add('options-item');
+    optionItem.innerHTML = `<div class="options-description-text">
+      <span>${capitalFirstLetter(option)}</span>
+    </div>
+    <div class="options-item-buttons">
+      <button class="options-button options-minus-button_js" id="options-minus-button-${option}" disabled type="button" >—</button>
+      <span class="options-counter-number" id="options-counter-number-${option}">${
+      optionsData[option].value
+    }</span>
+      <button class="options-button options-plus-button_js" id="options-plus-button-${option}" type="button">+</button>
+    </div>
+      `;
+    optionItems.appendChild(optionItem);
+    document
+      .getElementById(`options-plus-button-${option}`)
+      .addEventListener('click', () => plusOne(option));
+    document
+      .getElementById(`options-minus-button-${option}`)
+      .addEventListener('click', () => minusOne(option));
+  });
 };
 
-minusChild.addEventListener('click', hideChildren);
+const capitalFirstLetter = (option) =>
+  option[0].toUpperCase() + option.slice(1);
 
-const minus = document.querySelector('.filter__pax-count button.minus');
-const plus = document.querySelector('.filter__pax-count button.plus');
-const minusRoom = document.querySelector('.filter__pax-rooms button.minus');
-const plusRoom = document.querySelector('.filter__pax-rooms button.plus');
+const plusOne = (option) => {
+  const { min, max } = optionsData[option];
 
-const targetAdultsInput = document.querySelector('.filter__pax-adult input');
-
-const clickAdults = (e) => {
-  if (e.target.classList.contains('plus')) {
-    ++targetAdultsInput.value;
-  } else if (e.target.classList.contains('minus')) {
-    --targetAdultsInput.value;
+  if (optionsData[option].value < max) {
+    optionsData[option].value++;
+    if (option === 'children') {
+      addChildAge();
+    }
   }
-  if (targetAdultsInput.value <= 0) {
-    targetAdultsInput.value = 0;
-    minus.style.border = '1px solid #CECECE';
-    minus.style.color = '#CECECE';
-  } else {
-    minus.style.border = '1px solid #3077c6';
-    minus.style.color = '#3077c6';
+  if (option === 'children' && optionsData[option].value === 1) {
+    addChildAgeQuestion();
   }
-  if (targetAdultsInput.value >= 30) {
-    targetAdultsInput.value = 30;
-    plus.style.border = '1px solid #CECECE';
-    plus.style.color = '#CECECE';
-  } else {
-    plus.style.border = '1px solid #3077c6';
-    plus.style.color = '#3077c6';
+  if (optionsData[option].value > min) {
+    const minusButton = document.getElementById(
+      `options-minus-button-${option}`,
+    );
+    minusButton.removeAttribute('disabled');
   }
-  buttonTextChange();
+  if (optionsData[option].value === max) {
+    const plusButton = document.getElementById(`options-plus-button-${option}`);
+    plusButton.setAttribute('disabled', 'disabled');
+  }
+  refreshOptionCounter(option);
 };
 
-plus.addEventListener('click', clickAdults);
-minus.addEventListener('click', clickAdults);
+const minusOne = (option) => {
+  const { min, max } = optionsData[option];
 
-const targetChildrenInput = document.querySelector('.filter__pax-child input');
+  if (optionsData[option].value > min) {
+    optionsData[option].value--;
+    if (option === 'children') {
+      removeChildAge();
+    }
+  }
 
-const clickChildBtn = (e) => {
-  if (e.target.classList.contains('plus')) {
-    ++targetChildrenInput.value;
-  } else if (e.target.classList.contains('minus')) {
-    --targetChildrenInput.value;
+  if (optionsData[option].value < max) {
+    const plusButton = document.getElementById(`options-plus-button-${option}`);
+    plusButton.removeAttribute('disabled');
   }
-  if (targetChildrenInput.value <= 0) {
-    targetChildrenInput.value = 0;
-    minusChild.style.border = '1px solid #CECECE';
-    minusChild.style.color = '#CECECE';
-  } else {
-    minusChild.style.border = '1px solid #3077c6';
-    minusChild.style.color = '#3077c6';
+  if (optionsData[option].value === min) {
+    const minusButton = document.getElementById(
+      `options-minus-button-${option}`,
+    );
+    minusButton.setAttribute('disabled', 'disabled');
   }
-  if (targetChildrenInput.value >= 10) {
-    targetChildrenInput.value = 10;
-    plusChild.style.border = '1px solid #CECECE';
-    plusChild.style.color = '#CECECE';
-  } else {
-    plusChild.style.border = '1px solid #3077c6';
-    plusChild.style.color = '#3077c6';
+
+  if (option === 'children' && optionsData[option].value < 1) {
+    removeChildAgeQuestion();
   }
-  buttonTextChange();
+  refreshOptionCounter(option);
 };
 
-minusChild.addEventListener('click', clickChildBtn);
-plusChild.addEventListener('click', clickChildBtn);
+const addChildAge = () => {
+  const ageChildrenBlock = document.getElementById('options-select-items');
+  const ageOptions = [...Array(18)]
+    .map(
+      (_, index) =>
+        `<option value=${index}>${index} ${
+          index === 1 ? 'year old' : 'years old'
+        }</option>`,
+    )
+    .join('');
 
-const targetRoomsInput = document.querySelector('.filter__pax-rooms input');
-
-const clickRoom = (e) => {
-  if (e.target.classList.contains('plus')) {
-    ++targetRoomsInput.value;
-  } else if (e.target.classList.contains('minus')) {
-    --targetRoomsInput.value;
-  }
-  if (targetRoomsInput.value <= 1) {
-    targetRoomsInput.value = 1;
-    minusRoom.style.border = '1px solid #CECECE';
-    minusRoom.style.color = '#CECECE';
-  } else {
-    minusRoom.style.border = '1px solid #3077c6';
-    minusRoom.style.color = '#3077c6';
-  }
-  if (targetRoomsInput.value >= 30) {
-    targetRoomsInput.value = 30;
-    plusRoom.style.border = '1px solid #CECECE';
-    plusRoom.style.color = '#CECECE';
-  } else {
-    plusRoom.style.border = '1px solid #3077c6';
-    plusRoom.style.color = '#3077c6';
-  }
-  buttonTextChange();
+  ageChildrenBlock.innerHTML += `<div class="options-select-item"><select id="options-child-age" class="options-child-age-select" name="options-child-age">${ageOptions}</select></div>`;
 };
 
-plusRoom.addEventListener('click', clickRoom);
-minusRoom.addEventListener('click', clickRoom);
+const removeChildAge = () => {
+  const ageChildrenBlock = document.getElementById('options-select-items');
+  const lastSelectItem = document.querySelector(
+    '.options-select-item:last-child',
+  );
+  ageChildrenBlock.removeChild(lastSelectItem);
+};
 
-const changePax = document.querySelector('.search__content--btn');
-function buttonTextChange() {
-  changePax.textContent = `${targetAdultsInput.value} Adults — ${targetChildrenInput.value} Children — ${targetRoomsInput.value}  Room`;
-}
+const addChildAgeQuestion = () => {
+  const optionsTextDiv = document.getElementById('options-text-div');
+  optionsTextDiv.innerHTML = `<span class="options-text" id="options-text">What is the age of the child you’re travelling with?</span>`;
+};
+
+const removeChildAgeQuestion = () => {
+  const optionsTextDiv = document.getElementById('options-text-div');
+  optionsTextDiv.innerHTML = '';
+};
+
+const refreshOptionCounter = (option) => {
+  const optionNumber = document.getElementById(
+    `options-counter-number-${option}`,
+  );
+  optionNumber.textContent = optionsData[option].value;
+  optionsButton.textContent = `${optionsData.adults.value} Adults - ${optionsData.children.value} Children - ${optionsData.rooms.value} Room`;
+};
 
 // lesson 13
 

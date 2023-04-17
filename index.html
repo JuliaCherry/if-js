@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="src/images/favicon/favicon-32x32.png" />
     <link rel="stylesheet" href="src/css/styles.css" />
-    <title>Lesson-12-js</title>
+    <title>Lesson-13-js</title>
   </head>
   <body>
     <svg
@@ -338,8 +338,9 @@
                   />
                 </div>
               </div>
-              <div class="search__content search__content-pax">
+              <div class="search__content search__content-pax" id="search-options-container">
                 <button
+                  id="search-options"
                   class="search__content search__content--btn"
                   type="button"
                 >
@@ -383,82 +384,6 @@
               </div>
               <button class="search__content-btn">Search</button>
             </form>
-            <div class="filter">
-              <div class="filter__pax">
-                <div class="filter__pax-people">
-                  <div class="filter__pax-adult">
-                    <div>Adults</div>
-                    <div class="filter__pax-count">
-                      <button class="minus" value="-">-</button>
-                      <input
-                        id="adults"
-                        type="text"
-                        value="2"
-                        min="1"
-                        max="30"
-                      />
-                      <button class="plus" value="+">+</button>
-                    </div>
-                  </div>
-                  <div class="filter__pax-child">
-                    <div>Children</div>
-                    <div class="filter__pax-count">
-                      <button class="minus" value="-">-</button>
-                      <input
-                        id="children"
-                        type="text"
-                        value="1"
-                        min="0"
-                        max="10"
-                      />
-                      <button class="plus" value="+">+</button>
-                    </div>
-                  </div>
-                  <div class="filter__pax-rooms">
-                    <div>Rooms</div>
-                    <div class="filter__pax-count">
-                      <button class="minus" value="-">-</button>
-                      <input
-                        id="rooms"
-                        type="text"
-                        value="1"
-                        min="1"
-                        max="30"
-                      />
-                      <button class="plus" value="+">+</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="filter__pax-age">
-                  <span>
-                    <label for="age"
-                      >What is the age of the child you’re travelling
-                      with?</label
-                    >
-                  </span>
-                  <select id="age">
-                    <option>0 years old</option>
-                    <option>1 years old</option>
-                    <option>2 years old</option>
-                    <option>3 years old</option>
-                    <option>4 years old</option>
-                    <option>5 years old</option>
-                    <option>6 years old</option>
-                    <option>7 years old</option>
-                    <option>8 years old</option>
-                    <option>9 years old</option>
-                    <option>10 years old</option>
-                    <option>11 years old</option>
-                    <option>12 years old</option>
-                    <option>13 years old</option>
-                    <option>14 years old</option>
-                    <option>15 years old</option>
-                    <option>16 years old</option>
-                    <option>17 years old</option>
-                  </select>
-                </div>
-              </div>
-            </div>
             <div class="social">
               <div class="social__item">
                 <a class="social__item-link" href="#">
