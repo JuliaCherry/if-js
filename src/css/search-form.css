@@ -15,6 +15,10 @@
   line-height: 1.3;
 }
 
+.search__content::placeholder {
+  color: #333333;
+}
+
 .search__content-destination {
   width: 36%;
 }
@@ -74,14 +78,14 @@
   width: 27%;
 }
 
-.search__content--pax {
+.search__content--btn {
   width: 100%;
   height: 6.4rem;
   border: 3px solid transparent;
   text-align: center;
 }
 
-.search__content--pax:focus {
+.search__content--btn:focus {
   border: 3px solid var(--accent-yellow);
   border-radius: 8px;
 }
@@ -97,12 +101,101 @@
   line-height: 1.4;
 }
 
+.options {
+  padding: 22px 22px;
+  position: absolute;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 259px;
+  background-color: #ffffff;
+  top: 76px;
+  right: 0;
+}
+
+.options-description-text {
+  display: flex;
+  align-items: center;
+}
+
+.options-text-div {
+  margin-top: 24px;
+  margin-bottom: 12px;
+  line-height: 0.8;
+}
+
+.options-text {
+  font-size: 12px;
+}
+
+.options-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+}
+
+.options-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+.options-item-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.options-button {
+  color: #3077c6;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #3077c6;
+  cursor: pointer;
+  transform: none;
+}
+
+.options-button:disabled {
+  color: #cecece;
+  border: 1px solid #cecece;
+}
+
+.options-button :disabled {
+  color: #3077c6;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #3077c6;
+  cursor: pointer;
+  transform: none;
+}
+
+.options-child-age-select {
+  border: 1px solid #3077c6;
+  padding: 4px 8px;
+}
+
+.options-counter-number {
+  margin-top: 5px;
+}
+
+.options-select-items {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 4px;
+  column-gap: 10px;
+}
+
 @media (max-width: 767px) {
   .search {
     flex-wrap: wrap;
     background-color: var(--accent-yellow);
     border-radius: 0;
     border: 4px solid var(--accent-yellow);
+  }
+
+  .filter {
+    display: none;
   }
 
   .search__content {

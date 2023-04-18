@@ -1,5 +1,3 @@
-import { sum } from '../js/module.js';
-
 let user = 'John Doe';
 console.log(user);
 
@@ -111,9 +109,11 @@ console.log(changeZero2(array3));
 
 //Lesson-4
 
+const sum = (a) => (b) => a + b;
+
 console.log(sum(5)(2));
 
-const text = document.getElementsByTagName('p');
+const text = document.getElementsByTagName('h6');
 
 const getColor = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
