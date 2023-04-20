@@ -15,18 +15,22 @@ const guestData = (data) => {
     .join('');
 };
 
-fetch(hotelUrl)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`${response.status} - ${response.statusText}`);
-    }
-    return response.json();
-  })
-
-  .then((data) => {
-    guestData(data);
-  })
-
-  .catch((err) => {
-    console.log(err.message);
-  });
+if (sessionStorage.getItem('json')) {
+  const data = JSON.parse(sessionStorage.getItem('json'));
+  guestData(data);
+} else {
+  fetch(hotelUrl)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      sessionStorage.setItem('json', JSON.stringify(data));
+      guestData(data);
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+}
