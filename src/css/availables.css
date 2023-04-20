@@ -16,6 +16,7 @@
   display: flex;
   justify-content: space-around;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .available-invisible {

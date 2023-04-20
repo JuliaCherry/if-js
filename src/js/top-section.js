@@ -157,11 +157,11 @@ const refreshOptionCounter = (option) => {
 
 // lesson 13
 
-const availableSection = document.querySelector('.available-hotels'); //sekcia
-const availableItems = document.querySelector('.available__hotels-item'); //fotki
-const errorSearch = document.querySelector('.available-hotels-error'); //error
-const getRequest = document.getElementById('destination'); //input
-const searchBtn = document.querySelector('.search__content-btn'); //knopka
+const availableSection = document.querySelector('.available-hotels');
+const availableItems = document.querySelector('.available__hotels-item');
+const errorSearch = document.querySelector('.available-hotels-error');
+const getRequest = document.getElementById('destination');
+const searchForm = document.querySelector('.search');
 
 const showAvailableHotels = () => {
   availableItems.innerHTML = '';
@@ -189,7 +189,6 @@ const showAvailableHotels = () => {
         </div>
       </div>`;
         })
-        .slice(0, 4)
         .join('');
       availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
       if (data.length === 0) {
@@ -197,12 +196,13 @@ const showAvailableHotels = () => {
       } else {
         errorSearch.style.display = 'none';
       }
+      searchForm.reset();
     })
     .catch((err) => console.error(err));
 };
 
-searchBtn.addEventListener('click', (e) => {
-  e.preventDefault();
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
   showAvailableHotels();
 });
 
