@@ -1,5 +1,20 @@
 const hotelUrl = 'https://if-student-api.onrender.com/api/hotels/popular';
 
+const guestData = (data) => {
+  document.getElementById('homes__container-content').innerHTML = data
+    .map(
+      (hotel) =>
+        `<div>
+    <img class="homes__container-img"  src="${hotel.imageUrl}" id="${hotel.id}" alt="hotel-image">
+    <div class="homes__container-text">
+    <p class="homes__container-name">${hotel.name}</p>
+    <p class="homes__container-country">${hotel.city}, ${hotel.country}</p>
+    </div>
+     </div>`,
+    )
+    .join('');
+};
+
 fetch(hotelUrl)
   .then((response) => {
     if (!response.ok) {
@@ -9,27 +24,7 @@ fetch(hotelUrl)
   })
 
   .then((data) => {
-    console.log(data);
-
-    const sliderItems = document.createElement('div');
-    sliderItems.className = 'homes__container-content';
-
-    const imageItems = data
-      .slice(0, 4)
-      .map(
-        (hotel) =>
-          `<div class='homes__container-img'>
-    <img src=${hotel.imageUrl} alt="hotel-image" />
-    <div class='homes__container-text'>
-    <p class='homes__container-name'>${hotel.name}</p>
-    <p class='homes__container-country'>${hotel.city}, ${hotel.country}</p>
-    </div>
-  </div>`,
-      )
-      .join('');
-
-    sliderItems.innerHTML = imageItems;
-    document.querySelector('.homes__container-item').appendChild(sliderItems);
+    guestData(data);
   })
 
   .catch((err) => {
