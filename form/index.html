@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <form id="form" class="form">
+      <label>
+        <span>Add file</span>
+        <input type="file" name="file" id="file"
+      /></label>
+      <button type="submit">Send</button>
+    </form>
+    <form id="formSecond" class="formSecond">
+      <input
+        type="file"
+        name="fileSecond"
+        id="fileSecond"
+        hidden="hidden"
+      />
+      <div id="divPicture" class="divPicture">
+        click here to add picture
+      </div>
+    </form>
+    <script type="module" src="form-data.js"></script>
+  </body>
+</html>

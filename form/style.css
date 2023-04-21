@@ -1,0 +1,43 @@
+body {
+  padding: 30px;
+  font-size: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  padding: 20px;
+}
+
+form > * {
+  font-size: 25px;
+}
+
+form > label > * {
+  font-size: 25px;
+}
+
+button {
+  margin-top: 15px;
+}
+
+.formSecond {
+  max-width: 500px;
+}
+
+.divPicture {
+  height: 500px;
+  width: 500px;
+  overflow: hidden;
+  border: 1px solid #f5bd41;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+}
+
+.divPicture > img {
+  height: 500px;
+  width: 500px;
+}
