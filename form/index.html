@@ -8,21 +8,11 @@
   <body>
     <form id="form" class="form">
       <label>
-        <span>Add file</span>
-        <input type="file" name="file" id="file"
-      /></label>
+        <span>My file</span>
+        <input type="file" name="file" id="file" hidden />
+        <button type="button" id="image-button">Add file</button>
+      </label>
       <button type="submit">Send</button>
-    </form>
-    <form id="formSecond" class="formSecond">
-      <input
-        type="file"
-        name="fileSecond"
-        id="fileSecond"
-        hidden="hidden"
-      />
-      <div id="divPicture" class="divPicture">
-        click here to add picture
-      </div>
     </form>
     <script type="module" src="form-data.js"></script>
   </body>

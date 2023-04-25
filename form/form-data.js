@@ -1,4 +1,15 @@
 const formEl = document.getElementById('form');
+const imageButton = document.getElementById('image-button');
+const fileEl = document.getElementById('file');
+
+imageButton.addEventListener('click', () => {
+  fileEl.click();
+});
+
+fileEl.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  console.log(file);
+});
 
 formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -24,25 +35,20 @@ formEl.addEventListener('submit', async (event) => {
   console.log(result);
 });
 
-const divPicture = document.getElementById('divPicture');
-const file = document.getElementById('fileSecond');
+const imgEl = document.createElement('img');
+imgEl.setAttribute('src', '');
+imgEl.setAttribute('alt', '');
 
-const image = document.createElement('img');
-image.setAttribute('src', '');
-image.setAttribute('alt', '');
+document.body.appendChild(imgEl);
 
-divPicture.addEventListener('click', () => {
-  file.click();
-});
-
-file.addEventListener('change', (event) => {
+fileEl.addEventListener('change', (event) => {
   const file = event.target.files[0];
   const reader = new FileReader();
+
   reader.addEventListener('load', (event) => {
-    image.setAttribute('src', event.target.result);
-    image.setAttribute('alt', file.name);
-    divPicture.innerHTML = '';
-    divPicture.appendChild(image);
+    imgEl.setAttribute('src', event.target.result);
+    imgEl.setAttribute('alt', file.name);
   });
+
   reader.readAsDataURL(file);
 });
