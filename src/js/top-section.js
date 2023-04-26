@@ -164,11 +164,20 @@ const getRequest = document.getElementById('destination');
 const searchForm = document.querySelector('.search');
 
 const showAvailableHotels = () => {
+  const FilterValues = document.querySelectorAll('.options-counter-number');
+  const adultsValue = FilterValues[0].innerHTML;
+  const childrenValue = FilterValues[1].innerHTML;
+  const roomsValue = FilterValues[2].innerHTML;
+
   availableItems.innerHTML = '';
   availableSection.style.display = 'block';
 
   const url = new URL('https://if-student-api.onrender.com/api/hotels');
   url.searchParams.append('search', `${getRequest.value}`);
+  url.searchParams.append('adults', `${adultsValue}`);
+  url.searchParams.append('children', `${childrenValue}`);
+  url.searchParams.append('rooms', `${roomsValue}`);
+
   fetch(url, {
     method: 'GET',
   })
