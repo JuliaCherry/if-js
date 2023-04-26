@@ -1,7 +1,8 @@
 const hotelUrl = 'https://if-student-api.onrender.com/api/hotels/popular';
+const divContent = document.getElementById('homes__container-content');
 
 const guestData = (data) => {
-  document.getElementById('homes__container-content').innerHTML = data
+  divContent.innerHTML = data
     .map(
       (hotel) =>
         `<div>
@@ -13,6 +14,17 @@ const guestData = (data) => {
      </div>`,
     )
     .join('');
+
+  let isSorted = false;
+  while (!isSorted) {
+    isSorted = true;
+    for (let i = 0; i < data.length - 1; i++) {
+      if (data[i].name.length > data[i + 1].name.length) {
+        [data[i], data[i + 1]] = [data[i + 1], data[i]];
+        isSorted = false;
+      }
+    }
+  }
 };
 
 if (sessionStorage.getItem('json')) {
