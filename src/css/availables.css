@@ -1,0 +1,54 @@
+.available-hotels {
+  background-color: var(--bg-color-main);
+}
+
+.available__hotels-items {
+  display: flex;
+  padding-top: 12rem;
+  padding-bottom: 12rem;
+  align-items: center;
+  flex-direction: column;
+  gap: 10.6rem;
+  position: relative;
+}
+
+.available__hotels-item {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.available-invisible {
+  display: none;
+}
+
+.available-hotels-error {
+  display: none;
+  text-align: center;
+  font-weight: 500;
+  font-size: 40px;
+  font-family: Roboto, serif;
+  font-style: normal;
+  line-height: 47px;
+}
+
+.available__hotels-img img {
+  width: 296px;
+  height: 296px;
+}
+
+.available__hotels-text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 24px;
+}
+
+.available__hotels-name {
+  color: var(--accent-blue);
+}
+
+.available__hotels-country {
+  color: var(--stroke-color-additional);
+}

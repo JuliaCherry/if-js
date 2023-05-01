@@ -154,3 +154,59 @@ const refreshOptionCounter = (option) => {
   optionNumber.textContent = optionsData[option].value;
   optionsButton.textContent = `${optionsData.adults.value} Adults - ${optionsData.children.value} Children - ${optionsData.rooms.value} Room`;
 };
+
+// lesson 13
+
+const availableSection = document.querySelector('.available-hotels');
+const availableItems = document.querySelector('.available__hotels-item');
+const errorSearch = document.querySelector('.available-hotels-error');
+const getRequest = document.getElementById('destination');
+const searchForm = document.querySelector('.search');
+
+const showAvailableHotels = () => {
+  availableItems.innerHTML = '';
+  availableSection.style.display = 'block';
+
+  const url = new URL('https://if-student-api.onrender.com/api/hotels');
+  url.searchParams.append('search', `${getRequest.value}`);
+  fetch(url, {
+    method: 'GET',
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`${response.status} - ${response.statusText}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const hotelsItems = data
+        .map(({ name, city, country, imageUrl }) => {
+          return `<div class="available__hotels-img">
+        <img src=${imageUrl} alt="hotel-image"/>
+          <div class="available__hotels-text">
+          <p class="available__hotels-name"> ${name} </p>
+        <p class="available__hotels-country"> ${city}, ${country}</p>
+        </div>
+      </div>`;
+        })
+        .join('');
+      availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
+      if (data.length === 0) {
+        errorSearch.style.display = 'block';
+      } else {
+        errorSearch.style.display = 'none';
+      }
+
+      document.querySelector('.search__content-btn').onclick = () => {
+        document
+          .getElementById('hotels')
+          .scrollIntoView({ behavior: 'smooth' });
+      };
+    })
+    .catch((err) => console.error(err));
+};
+
+searchForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  showAvailableHotels(document.getElementById('destination').value);
+});

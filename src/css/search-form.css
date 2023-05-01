@@ -194,10 +194,6 @@
     border: 4px solid var(--accent-yellow);
   }
 
-  .filter {
-    display: none;
-  }
-
   .search__content {
     width: 100%;
     height: 6rem;
