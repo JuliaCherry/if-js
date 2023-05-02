@@ -196,16 +196,17 @@ const showAvailableHotels = () => {
       } else {
         errorSearch.style.display = 'none';
       }
-      searchForm.reset();
+
+      document.querySelector('.search__content-btn').onclick = () => {
+        document
+          .getElementById('hotels')
+          .scrollIntoView({ behavior: 'smooth' });
+      };
     })
     .catch((err) => console.error(err));
 };
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  showAvailableHotels();
+  showAvailableHotels(document.getElementById('destination').value);
 });
-
-document.querySelector('.search__content-btn').onclick = () => {
-  document.getElementById('hotels').scrollIntoView({ behavior: 'smooth' });
-};
