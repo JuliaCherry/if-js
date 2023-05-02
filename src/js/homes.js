@@ -27,8 +27,8 @@ const guestData = (data) => {
   }
 };
 
-if (sessionStorage.getItem('json')) {
-  const data = JSON.parse(sessionStorage.getItem('json'));
+if (sessionStorage.getItem('favoriteHotels')) {
+  const data = JSON.parse(sessionStorage.getItem('favoriteHotels'));
   guestData(data);
 } else {
   fetch(hotelUrl)
@@ -39,7 +39,7 @@ if (sessionStorage.getItem('json')) {
       return response.json();
     })
     .then((data) => {
-      sessionStorage.setItem('json', JSON.stringify(data));
+      sessionStorage.setItem('favoriteHotels', JSON.stringify(data));
       guestData(data);
     })
     .catch((err) => {
