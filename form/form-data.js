@@ -1,38 +1,27 @@
 const formEl = document.getElementById('form');
-const imageButton = document.getElementById('image-button');
+const addFileButton = document.getElementById('add-file');
 const fileEl = document.getElementById('file');
+const url = 'https://if-student-api.onrender.com/api/file';
 
-imageButton.addEventListener('click', () => {
+addFileButton.addEventListener('click', () => {
   fileEl.click();
-});
-
-fileEl.addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  console.log(file);
 });
 
 formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const fetchOptions = {
+  const result = await fetch(url, {
     method: 'POST',
     body: new FormData(formEl),
-  };
-
-  const result = await fetch(
-    'https://if-student-api.onrender.com/api/file',
-    fetchOptions,
-  )
+  })
     .then((response) => {
       if (!response.ok) {
-        throw new Error(response.statusText);
+        throw new Error(`Error: ${result.status}`);
       }
       return response.json();
     })
-    .then((result) => result)
+    .then((result) => console.log(result))
     .catch((error) => console.log(error.message));
-
-  console.log(result);
 });
 
 const imgEl = document.createElement('img');

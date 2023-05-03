@@ -164,20 +164,11 @@ const getRequest = document.getElementById('destination');
 const searchForm = document.querySelector('.search');
 
 const showAvailableHotels = () => {
-  const FilterValues = document.querySelectorAll('.options-counter-number');
-  const adultsValue = FilterValues[0].innerHTML;
-  const childrenValue = FilterValues[1].innerHTML;
-  const roomsValue = FilterValues[2].innerHTML;
-
   availableItems.innerHTML = '';
   availableSection.style.display = 'block';
 
   const url = new URL('https://if-student-api.onrender.com/api/hotels');
   url.searchParams.append('search', `${getRequest.value}`);
-  url.searchParams.append('adults', `${adultsValue}`);
-  url.searchParams.append('children', `${childrenValue}`);
-  url.searchParams.append('rooms', `${roomsValue}`);
-
   fetch(url, {
     method: 'GET',
   })
@@ -201,20 +192,21 @@ const showAvailableHotels = () => {
         .join('');
       availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
       if (data.length === 0) {
-        errorSearch.style.display = 'block';
+        errorSearch.classList.add('block');
       } else {
-        errorSearch.style.display = 'none';
+        errorSearch.classList.add('hide');
       }
-      searchForm.reset();
+
+      document.getElementById('search-btn').addEventListener('click', () => {
+        document
+          .querySelector('.available__hotels-item')
+          .scrollIntoView({ behavior: 'smooth' });
+      });
     })
     .catch((err) => console.error(err));
 };
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  showAvailableHotels();
+  showAvailableHotels(document.getElementById('destination').value);
 });
-
-document.querySelector('.search__content-btn').onclick = () => {
-  document.getElementById('hotels').scrollIntoView({ behavior: 'smooth' });
-};
