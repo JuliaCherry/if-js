@@ -3,12 +3,12 @@ const hotelUrl = 'https://if-student-api.onrender.com/api/hotels/popular';
 const guestData = (data) => {
   document.getElementById('homes__container-content').innerHTML = data
     .map(
-      (hotel) =>
+      ({ id, name, city, country, imageUrl }) =>
         `<div>
-    <img class="homes__container-img"  src="${hotel.imageUrl}" id="${hotel.id}" alt="hotel-image">
+    <img class="homes__container-img"  src="${imageUrl}" id="${id}" alt="hotel-image">
     <div class="homes__container-text">
-    <p class="homes__container-name">${hotel.name}</p>
-    <p class="homes__container-country">${hotel.city}, ${hotel.country}</p>
+    <p class="homes__container-name">${name}</p>
+    <p class="homes__container-country">${city}, ${country}</p>
     </div>
      </div>`,
     )

@@ -1,0 +1,28 @@
+body {
+  padding: 30px;
+  font-size: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 100px;
+  padding: 20px;
+}
+
+form > * {
+  font-size: 25px;
+}
+
+form > label > * {
+  font-size: 25px;
+}
+
+button {
+  margin-top: 15px;
+}
+
+img {
+  height: 500px;
+  width: 500px;
+}

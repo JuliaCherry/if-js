@@ -192,16 +192,16 @@ const showAvailableHotels = () => {
         .join('');
       availableItems.insertAdjacentHTML('afterbegin', hotelsItems);
       if (data.length === 0) {
-        errorSearch.style.display = 'block';
+        errorSearch.classList.add('block');
       } else {
-        errorSearch.style.display = 'none';
+        errorSearch.classList.add('hide');
       }
 
-      document.querySelector('.search__content-btn').onclick = () => {
+      document.getElementById('search-btn').addEventListener('click', () => {
         document
-          .getElementById('hotels')
+          .querySelector('.available__hotels-item')
           .scrollIntoView({ behavior: 'smooth' });
-      };
+      });
     })
     .catch((err) => console.error(err));
 };
