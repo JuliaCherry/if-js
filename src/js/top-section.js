@@ -196,7 +196,7 @@ const showAvailableHotels = () => {
       } else {
         errorSearch.style.display = 'none';
       }
-
+//TODO переделать на addEventListener
       document.querySelector('.search__content-btn').onclick = () => {
         document
           .getElementById('hotels')
